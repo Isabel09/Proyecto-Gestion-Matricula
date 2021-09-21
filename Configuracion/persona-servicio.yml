@@ -1,37 +1,34 @@
-# Spring Boot configuration
+#Application Configuration
+server:
+  port: 8092
+
+# To See H2 Console in Browser:
+# http://localhost:8091/h2-console
+# Enabling H2 Console
 spring:
-  profiles:
-    active: development
-  # Security configuration
-  security:
-    user:
-      name: user
-      password: user
-  # Database
+  # ===============================
+  # DB
+  # ===============================
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ieeuns?useSSL=false
+    driverClassName: com.mysql.jdbc.Driver
+    platform: mysql
     username: root
     password: 123456
-  # JPA properties
+
+  # ===============================
+  # JPA / HIBERNATE
+  # ===============================
   jpa:
-    hibernate:
-      ddl-auto: create # When you launch the application for the first time - switch "none" at "create"
     show-sql: true
-    database: MYSQL
+    hibernate:
+      ddl-auto: create
     database-platform: org.hibernate.dialect.MySQL5Dialect
-    open-in-view: false
-    generate-ddl: true
-# Logger configuration
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: false
+        format_sql: false
 logging:
   pattern:
-    console: "%d %-5level %logger : %msg%n"
-  level:
-    org.springframework: info
-    org.hibernate: debug
-# Server configuration
-server:
-  port: 8092 #set your port
-  error:
-    include-message: always
-    include-binding-errors: always
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
