@@ -10,7 +10,7 @@ spring:
   # DB
   # ===============================
   datasource:
-    url: jdbc:mysql://localhost:3306/ieeuns?useSSL=false
+    url: jdbc:mysql://localhost:3306/ieeuns_v2?useSSL=false
     driverClassName: com.mysql.jdbc.Driver
     platform: mysql
     username: root
