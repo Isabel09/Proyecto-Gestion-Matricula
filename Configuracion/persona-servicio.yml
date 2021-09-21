@@ -6,29 +6,12 @@ server:
 # http://localhost:8091/h2-console
 # Enabling H2 Console
 spring:
-  # ===============================
-  # DB
-  # ===============================
   datasource:
-    url: jdbc:mysql://localhost:3306/ieeuns_v2?useSSL=false
     driverClassName: com.mysql.jdbc.Driver
-    platform: mysql
+    url: jdbc:mysql://localhost:3306/ieeuns_v2
     username: root
     password: 123456
-
-  # ===============================
-  # JPA / HIBERNATE
-  # ===============================
   jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
     show-sql: true
-    hibernate:
-      ddl-auto: create
-    database-platform: org.hibernate.dialect.MySQL5Dialect
-    properties:
-      hibernate:
-        show_sql: true
-        use_sql_comments: false
-        format_sql: false
-logging:
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
